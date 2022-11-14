@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 1149035161}
   - component: {fileID: 1149035160}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -505,14 +505,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _UseGameOver: 1
   _playerName: Player
-  _canvasPrefab: {fileID: 7452757452074209405, guid: 97a41a669be0a544482cbc72fc52963b, type: 3}
+  _canvasPrefab: {fileID: 6342126261381459562, guid: 97a41a669be0a544482cbc72fc52963b, type: 3}
   _gameOverText: game over
   _EndScreenText: {fileID: 2768518502444809257, guid: faa3421af9a14034588f3c7e9b1ba022, type: 3}
   _GameOverColour:
     serializedVersion: 2
     rgba: 4280818883
   _useScoreCountUp: 1
-  _scoreText: {fileID: 1766001967}
+  _scoreGameObject: {fileID: 1766001967}
+  _scoreText: 'score : '
+  _ScoreColour:
+    serializedVersion: 2
+    rgba: 4294967295
 --- !u!4 &1467397917
 Transform:
   m_ObjectHideFlags: 0
