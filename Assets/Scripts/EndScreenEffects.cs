@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Text.RegularExpressions;
+
 public class EndScreenEffects : MonoBehaviour
 {
+    //GAME OVER STAMP
     public bool _UseGameOver;
     public string _playerName;
     public GameObject _canvasPrefab;
@@ -17,11 +20,27 @@ public class EndScreenEffects : MonoBehaviour
     private float offset = 80;
     private int count = 0;
     private bool inPosition = false;
+
+    //SCORE COUNT UP
+    public bool _useScoreCountUp;
+    public TextMeshProUGUI _scoreText;
+
+   private int score;
+
     private void Start()
     {
         if (_UseGameOver)
         {
             _player = GameObject.Find(_playerName);
+        }
+
+        if(_useScoreCountUp)
+        {
+            string[] texts = _scoreText.text.Split(' ');
+            foreach (var text in texts)
+            {
+                int.TryParse(text.ToString(), out score);
+            }
         }
     }
     private void Update()
@@ -64,6 +83,10 @@ public class EndScreenEffects : MonoBehaviour
             }
         }
    
+        if(_useScoreCountUp)
+        {
+
+        }
     }
 }
 
