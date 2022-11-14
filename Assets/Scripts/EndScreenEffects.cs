@@ -16,7 +16,7 @@ public class EndScreenEffects : MonoBehaviour
     private List<TextMeshProUGUI> texts = new List<TextMeshProUGUI>();
     private float offset = 80;
     private int count = 0;
-
+    private bool inPosition = false;
     private void Start()
     {
         if (_UseGameOver)
@@ -39,14 +39,17 @@ public class EndScreenEffects : MonoBehaviour
             {
                 if (count < _gameOverText.Length)
                 {
-                    texts.Add(Instantiate(_EndScreenText, new Vector3(990 + offset, 540, 0), Quaternion.identity, GameObject.Find("Canvas").GetComponent<Transform>()));
-                    texts[count].GetComponent<TextMeshProUGUI>().text = System.Convert.ToString(_gameOverText[count]);
-                    texts[count].GetComponent<TextMeshProUGUI>().color = _GameOverColour;
-                    offset += 80;
-
+                    if (!inPosition)
+                    {
+                        texts.Add(Instantiate(_EndScreenText, new Vector3(990 + offset, 540, 0), Quaternion.identity, GameObject.Find("Canvas").GetComponent<Transform>()));
+                        texts[count].GetComponent<TextMeshProUGUI>().text = System.Convert.ToString(_gameOverText[count]);
+                        texts[count].GetComponent<TextMeshProUGUI>().color = _GameOverColour;
+                        offset += 80;
+                        inPosition = true;
+                    }
                     if (texts[count].GetComponent<TextMeshProUGUI>().transform.localScale.x > 1)
                     {
-                        texts[count].GetComponent<TextMeshProUGUI>().transform.localScale = new Vector3(texts[count].GetComponent<TextMeshProUGUI>().transform.localScale.x - 0.35f, texts[count].GetComponent<TextMeshProUGUI>().transform.localScale.y - 0.35f, texts[count].GetComponent<TextMeshProUGUI>().transform.localScale.z - 0.35f);
+                        texts[count].GetComponent<TextMeshProUGUI>().transform.localScale = new Vector3(texts[count].GetComponent<TextMeshProUGUI>().transform.localScale.x - 0.25f, texts[count].GetComponent<TextMeshProUGUI>().transform.localScale.y - 0.25f, texts[count].GetComponent<TextMeshProUGUI>().transform.localScale.z - 0.25f);
                     }
                     else if (texts[count].GetComponent<TextMeshProUGUI>().transform.localScale.x <= 1)
                     {
@@ -55,8 +58,8 @@ public class EndScreenEffects : MonoBehaviour
                             texts[count].GetComponent<AudioSource>().Play();
                         }
                         count++;
+                        inPosition = false;
                     }
-
                 }
             }
         }
