@@ -36,14 +36,12 @@ public class EndScreenEffects : MonoBehaviour
 
     private void Start()
     {
-       _canvas = Instantiate(_canvasPrefab) as GameObject;
+        _canvas = Instantiate(_canvasPrefab) as GameObject;
         _canvas.name = _canvas.name.Replace("(Clone)", "");
         _canvas.SetActive(false);
 
-        if (_UseGameOver)
-        {
-            _player = GameObject.Find(_playerName);
-        }
+        _player = GameObject.Find(_playerName);
+        
 
         if(_useScoreCountUp)
         {
@@ -99,7 +97,7 @@ public class EndScreenEffects : MonoBehaviour
             _nextStage = true;
         }
    
-        if(_useScoreCountUp && _player == null && _isStopped && countUp < score && _nextStage)
+        if(_useScoreCountUp && _player == null && _isStopped && countUp <= score && _nextStage)
         {
             if (numberIncreased)
             {
