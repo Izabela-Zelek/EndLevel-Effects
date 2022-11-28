@@ -30,7 +30,7 @@ public class EndScreenEffects : MonoBehaviour
     public Color32 _ScoreColour = new Color32();
 
     private int score;
-    private int countUp = 1;
+    private int countUp = 0;
     private TextMeshProUGUI _endScreenScore;
     private bool numberIncreased = true;
 
