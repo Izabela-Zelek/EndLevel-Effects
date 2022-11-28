@@ -1,6 +1,6 @@
 {
   "name": "ie.itcarlow.endlevel-effects",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "displayName": "Endlevel-Effects",
   "description": "A package which adds a fun game over screen.",
   "unity": "2021.3"
