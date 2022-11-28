@@ -59,6 +59,15 @@ public class EndScreenEffects : MonoBehaviour
     }
     private void Update()
     {
+        if (_useScoreCountUp)
+        {
+            string[] texts = _scoreGameObject.text.Split(' ');
+            foreach (var text in texts)
+            {
+                int.TryParse(text.ToString(), out score);
+            }
+        }
+
         if (_player == null && !_isStopped)
         {
             Time.timeScale = 0;
