@@ -9,7 +9,7 @@ public class ScoreScript : MonoBehaviour
 
     private void Awake()
     {
-        randScore = Random.Range(10, 20);
+        randScore = Random.Range(10, 30);
         gameObject.GetComponent<TextMeshProUGUI>().text += randScore.ToString();
     }
 }

@@ -419,6 +419,7 @@ MonoBehaviour:
   _ScoreColour:
     serializedVersion: 2
     rgba: 4287834734
+  _ScoreSpeed: 0.1
 --- !u!4 &1467397917
 Transform:
   m_ObjectHideFlags: 0

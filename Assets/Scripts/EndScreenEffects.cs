@@ -50,7 +50,7 @@ public class EndScreenEffects : MonoBehaviour
             {
                 int.TryParse(text.ToString(), out score);
             }
-
+            
             _endScreenScore = _canvas.transform.Find("Image").transform.Find("Score").GetComponent<TextMeshProUGUI>();
             _canvas.transform.Find("Image").transform.Find("ScoreText").GetComponent<TextMeshProUGUI>().color = _ScoreColour;
             _canvas.transform.Find("Image").transform.Find("ScoreText").GetComponent<TextMeshProUGUI>().text = _scoreText;
@@ -110,21 +110,22 @@ public class EndScreenEffects : MonoBehaviour
         {
             if (numberIncreased)
             {
-                Debug.Log(countUp);
-
                 _endScreenScore.text =  countUp.ToString();
                 _endScreenScore.fontSize = 100;
                 numberIncreased = false;
             }
             if (!numberIncreased)
             {
-                _endScreenScore.fontSize -= 0.3f;
+                _endScreenScore.fontSize -= (score / 54.5f);
             }
             if(_endScreenScore.fontSize <= 68 && _endScreenScore.fontSize > 66)
             {
-                _endScreenScore.GetComponent<AudioSource>().Play();
                 numberIncreased = true;
                 countUp++;
+            }
+            else
+            {
+                _endScreenScore.GetComponent<AudioSource>().Play();
             }
         }
     }
