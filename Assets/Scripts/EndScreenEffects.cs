@@ -116,7 +116,14 @@ public class EndScreenEffects : MonoBehaviour
             }
             if (!numberIncreased)
             {
-                _endScreenScore.fontSize -= (score / 54.5f);
+                if (score / 54.5f >= 0.22f)
+                {
+                    _endScreenScore.fontSize -= (score / 54.5f);
+                }
+                else
+                {
+                    _endScreenScore.fontSize -= 0.22f;
+                }
             }
             if(_endScreenScore.fontSize <= 68 && _endScreenScore.fontSize > 66)
             {
