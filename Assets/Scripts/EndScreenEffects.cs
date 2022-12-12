@@ -52,6 +52,11 @@ public class EndScreenEffects : MonoBehaviour
             }
             
             _endScreenScore = _canvas.transform.Find("Image").transform.Find("Score").GetComponent<TextMeshProUGUI>();
+            _canvas.transform.Find("Image").transform.localScale = new Vector3(Screen.width / 1920, Screen.width / 1920, Screen.width / 1920);
+            float calc = Screen.width / 3.428571428571429f;
+            Debug.Log(calc);
+            Debug.Log(Screen.width  - Screen.width - calc);
+            _canvas.transform.Find("Image").transform.position = new Vector3(Screen.width - (Screen.width / 2) - calc, Screen.height / 2 - 10, 0);
             _canvas.transform.Find("Image").transform.Find("ScoreText").GetComponent<TextMeshProUGUI>().color = _ScoreColour;
             _canvas.transform.Find("Image").transform.Find("ScoreText").GetComponent<TextMeshProUGUI>().text = _scoreText;
             _endScreenScore.color = _ScoreColour;
@@ -81,10 +86,18 @@ public class EndScreenEffects : MonoBehaviour
             _nextStage = false;
             if (!inPosition)
             {
-                texts.Add(Instantiate(_EndScreenText, new Vector3(990 + offset, 540, 0), Quaternion.identity, GameObject.Find("Canvas").GetComponent<Transform>()));
+                Vector3 position = GameObject.Find("Main Camera").GetComponent<Camera>().WorldToScreenPoint(new Vector3(0, 0, 0));
+                position.x += offset;
+                texts.Add(Instantiate(_EndScreenText,position , Quaternion.identity, GameObject.Find("Canvas").GetComponent<Transform>()));
                 texts[count].GetComponent<TextMeshProUGUI>().text = System.Convert.ToString(_gameOverText[count]);
                 texts[count].GetComponent<TextMeshProUGUI>().color = _GameOverColour;
-                offset += 80;
+                texts[count].GetComponent<TextMeshProUGUI>().fontSize = (Screen.height / 10);
+                int offsetSize = Screen.height;
+                while(offsetSize > 1000)
+                {
+                    offsetSize -= 1000;
+                }
+                offset += offsetSize;
                 inPosition = true;
             }
             if (texts[count].GetComponent<TextMeshProUGUI>().transform.localScale.x > 1)
